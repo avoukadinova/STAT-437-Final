@@ -140,33 +140,41 @@ print(ggbiplot(pca, obs.scale = 1, var.scale = 1,ellipse = TRUE, circle = TRUE, 
 (sd_GBM_TTN = sd(TTN_GBM$days_to_death))
 (sd_LGG_TTN = sd(TTN_LGG$days_to_death))
 
-fit <- glm(days_to_death ~ IDH1 + ATRX + CIC + EGFR + FLG + MUC16 + TP53 + PTEN + TTN , data = GBM)
+fit <- lm(days_to_death ~ IDH1 + ATRX + CIC + EGFR + FLG + MUC16 + TP53 + PTEN + TTN , data = GBM)
 summary(fit)
+anova(fit)
 
 fit2 <- step(fit, data = GBM)
 summary(fit2)
 
 fit2$formula
 fit2$coefficients
+anova(fit2)
+
+plot(fit2$residuals, xlab = "Patient index", ylab = "Residual (days)", main = "GBM Residuals", cex = 2, cex.axis =1.5, cex.lab = 1.5)
+abline(h = 0, col = "red",lwd = 2)
 
 library(caret)
 
-k<-20
+k<-100
 acc <- NULL
+rmseTOTAL = 0
 
 for(i in 1:k){
   Train <- createDataPartition(GBM$days_to_death, p=0.75, list=FALSE)
   training <- GBM[ Train, ]
   testing <- GBM[ -Train, ]
   
-  fit2 <- lm(days_to_death ~ ATRX + CIC + EGFR + FLG + MUC16 + TP53 + PTEN  + TTN, data = training)
-  pred<-predict(fit2, newdata=testing)
+  fitB <- lm(days_to_death ~ ATRX + CIC + EGFR + FLG + MUC16 + TP53 + PTEN  + TTN, data = training)
+  pred<-predict(fitB, newdata=testing)
   
   print(testing$days_to_death - pred)
   
   rmse = RMSE(testing$days_to_death, pred)
-  print(rmse)
+  rmseTOTAL = rmseTOTAL + rmse
 }
+
+print(rmseTOTAL/100)
 
 fit3 <- glm(days_to_death ~ IDH1 + ATRX + CIC + EGFR + FLG + MUC16 + TP53 + PTEN + TTN , data = LGG)
 summary(fit3)
@@ -177,26 +185,27 @@ summary(fit4)
 fit4$formula
 fit4$coefficients
 
+plot(fit4$residuals, xlab = "Patient index", ylab = "Residual (days)", main = "LGG Residuals", cex = 2, cex.axis =1.5, cex.lab = 1.5)
+abline(h = 0, col = "red",lwd = 2)
+
 library(caret)
 
-k<-20
+k<-100
 acc <- NULL
+rmseTOTAL= 0
 
 for(i in 1:k){
   Train <- createDataPartition(LGG$days_to_death, p=0.75, list=FALSE)
   training <- LGG[ Train, ]
   testing <- LGG[ -Train, ]
   
-  fit2 <- lm(days_to_death ~ CIC + FLG + IDH1, data = training)
-  pred<-predict(fit2, newdata=testing)
+  fitA <- lm(days_to_death ~ CIC + FLG + IDH1, data = training)
+  pred<-predict(fitA, newdata=testing)
   
   print(testing$days_to_death - pred)
   
   rmse = RMSE(testing$days_to_death, pred)
-  print(rmse)
+  rmseTOTAL = rmseTOTAL + rmse
 }
 
-anova(fit)
-anova(fit2)
-anova(fit3)
-anova(fit4)
+print(rmseTOTAL/100)
