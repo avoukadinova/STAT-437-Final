@@ -17,56 +17,56 @@ LGG <- subset(data2, subset=(project_id =='TCGA-LGG'))
 TP53 <- read.xls("/Users/adivoukadinova/Desktop/Adi's Folder/Loyola Semester 2/STAT 437/Final/all_data.xls", sheet = "TP53")
 TP53_GBM = subset(TP53, subset=(project_id =='TCGA-GBM'))
 TP53_LGG = subset(TP53, subset=(project_id =='TCGA-LGG'))
-t.test(TP53_GBM$days_to_death,mu=405)
-t.test(TP53_LGG$days_to_death,mu=905)
+wilcox.test(TP53_GBM$days_to_death,mu=405)
+wilcox.test(TP53_LGG$days_to_death,mu=905)
 
 TTN <- read.xls("/Users/adivoukadinova/Desktop/Adi's Folder/Loyola Semester 2/STAT 437/Final/all_data.xls", sheet = "TTN")
 TTN_GBM = subset(TTN, subset=(project_id =='TCGA-GBM'))
 TTN_LGG = subset(TTN, subset=(project_id =='TCGA-LGG'))
-t.test(TTN_GBM$days_to_death,mu=405)
-t.test(TTN_LGG$days_to_death,mu=905)
+wilcox.test(TTN_GBM$days_to_death,mu=405)
+wilcox.test(TTN_LGG$days_to_death,mu=905)
 
 PTEN <- read.xls("/Users/adivoukadinova/Desktop/Adi's Folder/Loyola Semester 2/STAT 437/Final/all_data.xls", sheet = "PTEN")
 PTEN_GBM = subset(PTEN, subset=(project_id =='TCGA-GBM'))
 PTEN_LGG = subset(PTEN, subset=(project_id =='TCGA-LGG'))
-t.test(PTEN_GBM$days_to_death,mu=405)
-t.test(PTEN_LGG$days_to_death,mu=905)
+wilcox.test(PTEN_GBM$days_to_death,mu=405)
+wilcox.test(PTEN_LGG$days_to_death,mu=905)
 
 EGFR <- read.xls("/Users/adivoukadinova/Desktop/Adi's Folder/Loyola Semester 2/STAT 437/Final/all_data.xls", sheet = "EGFR")
 EGFR_GBM = subset(EGFR, subset=(project_id =='TCGA-GBM'))
 EGFR_LGG = subset(EGFR, subset=(project_id =='TCGA-LGG'))
-t.test(EGFR_GBM$days_to_death,mu=405)
-t.test(EGFR_LGG$days_to_death,mu=905)
+wilcox.test(EGFR_GBM$days_to_death,mu=405)
+wilcox.test(EGFR_LGG$days_to_death,mu=905)
 
 IDH1 <- read.xls("/Users/adivoukadinova/Desktop/Adi's Folder/Loyola Semester 2/STAT 437/Final/all_data.xls", sheet = "IDH1")
 IDH1_GBM = subset(IDH1, subset=(project_id =='TCGA-GBM'))
 IDH1_LGG = subset(IDH1, subset=(project_id =='TCGA-LGG'))
-t.test(IDH1_GBM$days_to_death,mu=405)
-t.test(IDH1_LGG$days_to_death,mu=905)
+wilcox.test(IDH1_GBM$days_to_death,mu=405)
+wilcox.test(IDH1_LGG$days_to_death,mu=905)
 
 FLG <- read.xls("/Users/adivoukadinova/Desktop/Adi's Folder/Loyola Semester 2/STAT 437/Final/all_data.xls", sheet = "FLG")
 FLG_GBM = subset(FLG, subset=(project_id =='TCGA-GBM'))
 FLG_LGG = subset(FLG, subset=(project_id =='TCGA-LGG'))
-t.test(FLG_GBM$days_to_death,mu=405)
-t.test(FLG_LGG$days_to_death,mu=905)
+wilcox.test(FLG_GBM$days_to_death,mu=405)
+wilcox.test(FLG_LGG$days_to_death,mu=905)
 
 ATRX <- read.xls("/Users/adivoukadinova/Desktop/Adi's Folder/Loyola Semester 2/STAT 437/Final/all_data.xls", sheet = "ATRX")
 ATRX_GBM = subset(ATRX, subset=(project_id =='TCGA-GBM'))
 ATRX_LGG = subset(ATRX, subset=(project_id =='TCGA-LGG'))
-t.test(ATRX_GBM$days_to_death,mu=405)
-t.test(ATRX_LGG$days_to_death,mu=905)
+wilcox.test(ATRX_GBM$days_to_death,mu=405)
+wilcox.test(ATRX_LGG$days_to_death,mu=905)
 
 MUC16 <- read.xls("/Users/adivoukadinova/Desktop/Adi's Folder/Loyola Semester 2/STAT 437/Final/all_data.xls", sheet = "MUC16")
 MUC16_GBM = subset(MUC16, subset=(project_id =='TCGA-GBM'))
 MUC16_LGG = subset(MUC16, subset=(project_id =='TCGA-LGG'))
-t.test(MUC16_GBM$days_to_death,mu=405)
-t.test(MUC16_LGG$days_to_death,mu=905)
+wilcox.test(MUC16_GBM$days_to_death,mu=405)
+wilcox.test(MUC16_LGG$days_to_death,mu=905)
 
 CIC <- read.xls("/Users/adivoukadinova/Desktop/Adi's Folder/Loyola Semester 2/STAT 437/Final/all_data.xls", sheet = "CIC")
 CIC_GBM = subset(CIC, subset=(project_id =='TCGA-GBM'))
 CIC_LGG = subset(CIC, subset=(project_id =='TCGA-LGG'))
-t.test(CIC_GBM$days_to_death,mu=405)
-t.test(CIC_LGG$days_to_death,mu=905)
+wilcox.test(CIC_GBM$days_to_death,mu=405)
+wilcox.test(CIC_LGG$days_to_death,mu=905)
 
 genes_GBM = rbind(TP53_GBM, TTN_GBM, PTEN_GBM, EGFR_GBM, IDH1_GBM, FLG_GBM, ATRX_GBM, MUC16_GBM, CIC_GBM)
 genes_LGG = rbind(TP53_LGG, TTN_LGG, PTEN_LGG, EGFR_LGG, IDH1_LGG, FLG_LGG, ATRX_LGG, MUC16_LGG, CIC_LGG)
@@ -190,7 +190,7 @@ abline(h = 0, col = "red",lwd = 2)
 
 library(caret)
 
-k<-100
+k<-10
 acc <- NULL
 rmseTOTAL= 0
 
