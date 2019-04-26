@@ -6,6 +6,8 @@ require(reshape2)
 library(gdata)
 library(varhandle)
 library(ggbiplot)
+library(survival)
+library(survminer)
 
 raw_data1 <- read.xls("/Users/adivoukadinova/Desktop/Adi's Folder/Loyola Semester 2/STAT 437/Final/data_subset.xlsx")
 data1 <- raw_data1[with(raw_data1, order(project_id)),]
@@ -17,56 +19,56 @@ LGG <- subset(data2, subset=(project_id =='TCGA-LGG'))
 TP53 <- read.xls("/Users/adivoukadinova/Desktop/Adi's Folder/Loyola Semester 2/STAT 437/Final/all_data.xls", sheet = "TP53")
 TP53_GBM = subset(TP53, subset=(project_id =='TCGA-GBM'))
 TP53_LGG = subset(TP53, subset=(project_id =='TCGA-LGG'))
-wilcox.test(TP53_GBM$days_to_death,mu=405)
-wilcox.test(TP53_LGG$days_to_death,mu=905)
+wilcox.test(TP53_GBM$days_to_death,mu=381)
+wilcox.test(TP53_LGG$days_to_death,mu=902.5)
 
 TTN <- read.xls("/Users/adivoukadinova/Desktop/Adi's Folder/Loyola Semester 2/STAT 437/Final/all_data.xls", sheet = "TTN")
 TTN_GBM = subset(TTN, subset=(project_id =='TCGA-GBM'))
 TTN_LGG = subset(TTN, subset=(project_id =='TCGA-LGG'))
-wilcox.test(TTN_GBM$days_to_death,mu=405)
-wilcox.test(TTN_LGG$days_to_death,mu=905)
+wilcox.test(TTN_GBM$days_to_death,mu=381)
+wilcox.test(TTN_LGG$days_to_death,mu=902.5)
 
 PTEN <- read.xls("/Users/adivoukadinova/Desktop/Adi's Folder/Loyola Semester 2/STAT 437/Final/all_data.xls", sheet = "PTEN")
 PTEN_GBM = subset(PTEN, subset=(project_id =='TCGA-GBM'))
 PTEN_LGG = subset(PTEN, subset=(project_id =='TCGA-LGG'))
-wilcox.test(PTEN_GBM$days_to_death,mu=405)
-wilcox.test(PTEN_LGG$days_to_death,mu=905)
+wilcox.test(PTEN_GBM$days_to_death,mu=381)
+wilcox.test(PTEN_LGG$days_to_death,mu=902.5)
 
 EGFR <- read.xls("/Users/adivoukadinova/Desktop/Adi's Folder/Loyola Semester 2/STAT 437/Final/all_data.xls", sheet = "EGFR")
 EGFR_GBM = subset(EGFR, subset=(project_id =='TCGA-GBM'))
 EGFR_LGG = subset(EGFR, subset=(project_id =='TCGA-LGG'))
-wilcox.test(EGFR_GBM$days_to_death,mu=405)
-wilcox.test(EGFR_LGG$days_to_death,mu=905)
+wilcox.test(EGFR_GBM$days_to_death,mu=381)
+wilcox.test(EGFR_LGG$days_to_death,mu=902.5)
 
 IDH1 <- read.xls("/Users/adivoukadinova/Desktop/Adi's Folder/Loyola Semester 2/STAT 437/Final/all_data.xls", sheet = "IDH1")
 IDH1_GBM = subset(IDH1, subset=(project_id =='TCGA-GBM'))
 IDH1_LGG = subset(IDH1, subset=(project_id =='TCGA-LGG'))
-wilcox.test(IDH1_GBM$days_to_death,mu=405)
-wilcox.test(IDH1_LGG$days_to_death,mu=905)
+wilcox.test(IDH1_GBM$days_to_death,mu=381)
+wilcox.test(IDH1_LGG$days_to_death,mu=902.5)
 
 FLG <- read.xls("/Users/adivoukadinova/Desktop/Adi's Folder/Loyola Semester 2/STAT 437/Final/all_data.xls", sheet = "FLG")
 FLG_GBM = subset(FLG, subset=(project_id =='TCGA-GBM'))
 FLG_LGG = subset(FLG, subset=(project_id =='TCGA-LGG'))
-wilcox.test(FLG_GBM$days_to_death,mu=405)
-wilcox.test(FLG_LGG$days_to_death,mu=905)
+wilcox.test(FLG_GBM$days_to_death,mu=381)
+wilcox.test(FLG_LGG$days_to_death,mu=902.5)
 
 ATRX <- read.xls("/Users/adivoukadinova/Desktop/Adi's Folder/Loyola Semester 2/STAT 437/Final/all_data.xls", sheet = "ATRX")
 ATRX_GBM = subset(ATRX, subset=(project_id =='TCGA-GBM'))
 ATRX_LGG = subset(ATRX, subset=(project_id =='TCGA-LGG'))
-wilcox.test(ATRX_GBM$days_to_death,mu=405)
-wilcox.test(ATRX_LGG$days_to_death,mu=905)
+wilcox.test(ATRX_GBM$days_to_death,mu=381)
+wilcox.test(ATRX_LGG$days_to_death,mu=902.5)
 
 MUC16 <- read.xls("/Users/adivoukadinova/Desktop/Adi's Folder/Loyola Semester 2/STAT 437/Final/all_data.xls", sheet = "MUC16")
 MUC16_GBM = subset(MUC16, subset=(project_id =='TCGA-GBM'))
 MUC16_LGG = subset(MUC16, subset=(project_id =='TCGA-LGG'))
-wilcox.test(MUC16_GBM$days_to_death,mu=405)
-wilcox.test(MUC16_LGG$days_to_death,mu=905)
+wilcox.test(MUC16_GBM$days_to_death,mu=381)
+wilcox.test(MUC16_LGG$days_to_death,mu=902.5)
 
 CIC <- read.xls("/Users/adivoukadinova/Desktop/Adi's Folder/Loyola Semester 2/STAT 437/Final/all_data.xls", sheet = "CIC")
 CIC_GBM = subset(CIC, subset=(project_id =='TCGA-GBM'))
 CIC_LGG = subset(CIC, subset=(project_id =='TCGA-LGG'))
-wilcox.test(CIC_GBM$days_to_death,mu=405)
-wilcox.test(CIC_LGG$days_to_death,mu=905)
+wilcox.test(CIC_GBM$days_to_death,mu=381)
+wilcox.test(CIC_LGG$days_to_death,mu=902.5)
 
 genes_GBM = rbind(TP53_GBM, TTN_GBM, PTEN_GBM, EGFR_GBM, IDH1_GBM, FLG_GBM, ATRX_GBM, MUC16_GBM, CIC_GBM)
 genes_LGG = rbind(TP53_LGG, TTN_LGG, PTEN_LGG, EGFR_LGG, IDH1_LGG, FLG_LGG, ATRX_LGG, MUC16_LGG, CIC_LGG)
@@ -80,10 +82,10 @@ days_to_death_GBM <- genes_GBM$days_to_death
 days_to_death_LGG <- genes_LGG$days_to_death
 
 boxplot(days_to_death_GBM~index_GBM, names=gene_names, xlab = "Gene Name", ylab = "Patient Survival Time (days)", main = "GBM")
-abline(h = 450, col = "red",lwd = 2)
+abline(h = 381, col = "red",lwd = 2)
 
 boxplot(days_to_death_LGG~index_LGG, names=gene_names, xlab = "Gene Name", ylab = "Patient Survival Time (days)", main = "LGG")
-abline(h = 2700, col = "red",lwd = 2)
+abline(h = 902.5, col = "red",lwd = 2)
 
 pca <- prcomp(GBM[,10:18], center = TRUE,scale. = TRUE)
 summary(pca)
@@ -140,72 +142,27 @@ print(ggbiplot(pca, obs.scale = 1, var.scale = 1,ellipse = TRUE, circle = TRUE, 
 (sd_GBM_TTN = sd(TTN_GBM$days_to_death))
 (sd_LGG_TTN = sd(TTN_LGG$days_to_death))
 
-fit <- lm(days_to_death ~ IDH1 + ATRX + CIC + EGFR + FLG + MUC16 + TP53 + PTEN + TTN , data = GBM)
+fit <- coxph(Surv(days_to_death) ~ IDH1 + ATRX + CIC + EGFR + FLG + MUC16 + TP53 + PTEN + TTN , data = GBM)
 summary(fit)
-anova(fit)
 
 fit2 <- step(fit, data = GBM)
 summary(fit2)
 
+ggsurvplot(fit = survfit(fit2), data = GBM, palette = "#2E9FDF", 
+           ggtheme = theme_minimal(), title = "GBM",
+           font.x = 18, font.y = 18, font.ticks = 18)
+
 fit2$formula
 fit2$coefficients
-anova(fit2)
 
-plot(fit2$residuals, xlab = "Patient index", ylab = "Residual (days)", main = "GBM Residuals", cex = 2, cex.axis =1.5, cex.lab = 1.5)
-abline(h = 0, col = "red",lwd = 2)
-
-library(caret)
-
-k<-100
-acc <- NULL
-rmseTOTAL = 0
-
-for(i in 1:k){
-  Train <- createDataPartition(GBM$days_to_death, p=0.75, list=FALSE)
-  training <- GBM[ Train, ]
-  testing <- GBM[ -Train, ]
-  
-  fitB <- lm(days_to_death ~ ATRX + CIC + EGFR + FLG + MUC16 + TP53 + PTEN  + TTN, data = training)
-  pred<-predict(fitB, newdata=testing)
-  
-  print(testing$days_to_death - pred)
-  
-  rmse = RMSE(testing$days_to_death, pred)
-  rmseTOTAL = rmseTOTAL + rmse
-}
-
-print(rmseTOTAL/100)
-
-fit3 <- glm(days_to_death ~ IDH1 + ATRX + CIC + EGFR + FLG + MUC16 + TP53 + PTEN + TTN , data = LGG)
+fit3 <- coxph(Surv(days_to_death) ~ IDH1 + ATRX + CIC + EGFR + FLG + MUC16 + TP53 + PTEN + TTN , data = LGG)
 summary(fit3)
 
 fit4 <- step(fit3, data = LGG)
 summary(fit4)
 
+ggsurvplot(fit = survfit(fit4), data = LGG, palette = "#2E9FDF", 
+           ggtheme = theme_minimal(), title = "LGG",
+           font.x = 18, font.y = 18, font.ticks = 18)
 fit4$formula
 fit4$coefficients
-
-plot(fit4$residuals, xlab = "Patient index", ylab = "Residual (days)", main = "LGG Residuals", cex = 2, cex.axis =1.5, cex.lab = 1.5)
-abline(h = 0, col = "red",lwd = 2)
-
-library(caret)
-
-k<-10
-acc <- NULL
-rmseTOTAL= 0
-
-for(i in 1:k){
-  Train <- createDataPartition(LGG$days_to_death, p=0.75, list=FALSE)
-  training <- LGG[ Train, ]
-  testing <- LGG[ -Train, ]
-  
-  fitA <- lm(days_to_death ~ CIC + FLG + IDH1, data = training)
-  pred<-predict(fitA, newdata=testing)
-  
-  print(testing$days_to_death - pred)
-  
-  rmse = RMSE(testing$days_to_death, pred)
-  rmseTOTAL = rmseTOTAL + rmse
-}
-
-print(rmseTOTAL/100)
